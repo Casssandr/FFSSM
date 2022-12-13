@@ -4,6 +4,7 @@
 package FFSSM;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +20,8 @@ public class Plongee {
 
 	public int duree;
 
+	private ArrayList<Plongeur> lesPlongeurs;
+
 	public Plongee(Site lieu, Moniteur chefDePalanquee, LocalDate date, int profondeur, int duree) {
 		this.lieu = lieu;
 		this.chefDePalanquee = chefDePalanquee;
@@ -29,7 +32,8 @@ public class Plongee {
 
 	public void ajouteParticipant(Plongeur participant) {
 		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		//throw new UnsupportedOperationException("Pas encore implémenté");
+		lesPlongeurs.add(participant);
 	}
 
 	public LocalDate getDate() {
@@ -42,9 +46,19 @@ public class Plongee {
 	 * licence valide à la date de la plongée
 	 * @return vrai si la plongée est conforme
 	 */
-	public boolean estConforme() {
+	public boolean estConforme() throws Exception {
 		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		//throw new UnsupportedOperationException("Pas encore implémenté");
+		if (lesPlongeurs.isEmpty()){
+			throw new Exception("Il n'y a aucune plongeur pour cette palongée");
+		}
+		boolean bool = true;
+		for (Plongeur p : lesPlongeurs){
+			if (!(p.derniereLicence().estValide(this.date))){
+				bool = false;
+			}
+		}
+		return bool;
 	}
 
 }

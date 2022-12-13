@@ -4,15 +4,19 @@
 package FFSSM;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static java.util.Optional.empty;
 
 public class Moniteur extends Plongeur {
 
     public int numeroDiplome;
+    private ArrayList<Embauche> lesEmplois;
 
-    public Moniteur(String numeroINSEE, String nom, String prenom, String adresse, String telephone, LocalDate naissance, int numeroDiplome) {
-        super(numeroINSEE, nom, prenom, adresse, telephone, naissance);
+    public Moniteur(String numeroINSEE, String nom, String prenom, String adresse, String telephone, LocalDate naissance, int niveau, GroupeSanguin sang, int numeroDiplome) {
+        super(numeroINSEE, nom, prenom, adresse, telephone, naissance, niveau, sang);
         this.numeroDiplome = numeroDiplome;
     }
 
@@ -23,7 +27,16 @@ public class Moniteur extends Plongeur {
      */
     public Optional<Club> employeurActuel() {
          // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        //throw new UnsupportedOperationException("Pas encore implémenté");
+        if (lesEmplois.isEmpty()){
+            return empty();
+        }
+        if (lesEmplois.get((lesEmplois.size()) - 1).getFin() == null){
+            return empty();
+        }else{
+            Club employeur = lesEmplois.get((lesEmplois.size())- 1).getEmployeur();
+            return Optional.ofNullable(employeur);
+        }
     }
     
     /**
@@ -33,7 +46,8 @@ public class Moniteur extends Plongeur {
      */
     public void nouvelleEmbauche(Club employeur, LocalDate debutNouvelle) {   
          // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");	    
+        //throw new UnsupportedOperationException("Pas encore implémenté");
+        lesEmplois.add(new Embauche(debutNouvelle, this, employeur));
     }
 
     public List<Embauche> emplois() {
