@@ -52,7 +52,8 @@ public class Moniteur extends Plongeur {
 
     public List<Embauche> emplois() {
          // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        //throw new UnsupportedOperationException("Pas encore implémenté");
+        return lesEmplois;
     }
 
 }

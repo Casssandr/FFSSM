@@ -30,6 +30,8 @@ public class Plongee {
 		this.duree = duree;
 	}
 
+	public ArrayList<Plongeur> getPlongeurs(){return lesPlongeurs;}
+
 	public void ajouteParticipant(Plongeur participant) {
 		// TODO: Implémenter cette méthode
 		//throw new UnsupportedOperationException("Pas encore implémenté");

@@ -3,6 +3,7 @@
  */
 package FFSSM;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,6 +17,7 @@ public class Club {
     public String adresse;
 
     public String telephone;
+
 
     public Club(Moniteur président, String nom, String telephone) {
         this.president = président;
@@ -31,7 +33,12 @@ public class Club {
      */
     public Set<Plongee> plongeesNonConformes() {
          // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        //throw new UnsupportedOperationException("Pas encore implémenté");
+
+            if (plong.derniereLicence().estValide()){
+
+            }
+        }
     }
 
     /**
